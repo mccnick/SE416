@@ -9,14 +9,18 @@ public class AppCacheSafe
     private static volatile AppCache instance;  // volatile <-- important
     private final ConcurrentHashMap<EnhancementId, ConfigurationData> cache; // final, thread-safe
 
-    private AppCacheSafe() {
+    private AppCacheSafe() 
+    {
         cache = new ConcurrentHashMap<>();
     }
 
-    public static AppCache getInstance() {
+    public static AppCache getInstance() 
+    {
         if (instance == null) {
-            synchronized (AppCache.class) {
-                if (instance == null) {
+            synchronized (AppCache.class) 
+            {
+                if (instance == null) 
+                {
                     instance = new AppCache();
                 }
             }
